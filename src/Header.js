@@ -42,13 +42,13 @@ function Header() {
 
                                  {/* <li><NavLink  to='/login'>{user_id ? 'Logout' : 'Login / Sign up'}</NavLink ></li> */}
 
-                                 <li><div className="language">
+                                 {/* <li><div className="language">
                                     <select>
                                        <option>ENG</option>
                                        <option>HINDI</option>
                                     </select>
                                  </div>
-                                 </li>
+                                 </li> */}
 
 
 
