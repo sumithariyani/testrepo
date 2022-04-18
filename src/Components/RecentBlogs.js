@@ -69,7 +69,7 @@ function RecentBlogs() {
 
                   {(dataarray ?? []).map((dataarray) => {
                      return <Link to={{
-                        pathname: "/blogs",
+                        pathname: "/blog-detail",
                         state: {
                            blog_id: dataarray.blog_id,
                         }

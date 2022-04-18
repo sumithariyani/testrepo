@@ -11,7 +11,7 @@ function Footer() {
       e.preventDefault();
 
          const Formvlaues = new FormData(e.target);
-     
+
          try{
           let response = await axios.post('/subscribe_email',Formvlaues,{headers:{ "Content-Type": "multipart/form-data",
           "Accept": "application/json","type": "formData"}});
@@ -53,7 +53,7 @@ function Footer() {
                    
                      <form onSubmit={(e)=>{footerForm(e);}}  id = 'FmForm'  > 
                         <div className="join-from">
-                        <input type="email" name = 'email' placeholder="Email address.." />
+                        <input type="email" name = 'email' required placeholder="Email address.." />
                         <input type='hidden' name ='token' value='a250bcr552s' />
                         <button type="submit" className="w-btn w-btn-2">Subscribe</button>
                         </div>

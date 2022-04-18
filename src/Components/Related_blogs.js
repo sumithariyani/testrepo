@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-
+import { useHistory } from 'react-router-dom'; 
 const options = {
   loop: false,
   margin: 30,
@@ -41,7 +41,7 @@ const options = {
 };
 
 function Related_blogs() {
-
+  const history = useHistory();
   const [get_category, setGet_category] = useState([]);
 
   const get_cat = async () => {
@@ -51,7 +51,7 @@ function Related_blogs() {
       let name = 'a250bcr552s'
       formData.append("token", name);
 
-      const options = {
+      const options2 = {
         headers: {
           "Content-Type": "multipart/form-data",
           "Accept": "application/json",
@@ -60,7 +60,7 @@ function Related_blogs() {
       };
 
       try {
-        let response = await axios.post('/iron_gate/admin/api/get_related_blog', formData, options);
+        let response = await axios.post('/iron_gate/admin/api/get_related_blog', formData, options2);
 
         return response.data;
       } catch (err) { console.error(err); toast.error('some errror'); return false; }
@@ -81,11 +81,14 @@ function Related_blogs() {
     get_cat();
   }, []);
 
-  let dataarray = get_category.data;
-  // if(get_category.status==true){
-  console.log(dataarray);
+  
+  console.log('get_category');
+  console.log(get_category);
 
-
+const call_blogs = (id)=>{
+  localStorage.setItem('blog_id', id);
+  history.push('/blog-detail'); 
+}
 
   return (
     <>
@@ -102,88 +105,20 @@ function Related_blogs() {
             <div className="col-lg-12">
               <OwlCarousel {...options}>
                 {(get_category.length > 0) ? get_category.map((item, index) => {
-                  <div className="blog_list">
+                  return<div key={index} onClick = {e=>{call_blogs(item.blog_id) }} className="blog_list">
                     <div className="imgDiv">
-                      <a href="#">
-                        <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                      </a>
+                     
+                        <img src={item.image} />
+                   
                     </div>
                     <div className="contentText">
-                      <h5>Cleanliness & Health </h5>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                      <a href="#">Read More..</a>
+                      <h5>{item.title}</h5>
+                       <p>{   item.description.slice(0,25) }</p>
+                       <a href="#">Read More..</a>
                     </div>
                   </div>;
                 }) : ''}
-                <div className="blog_list">
-                  <div className="imgDiv">
-                    <a href="#">
-                      <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                    </a>
-                  </div>
-                  <div className="contentText">
-                    <h5>Cleanliness & Health </h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    <a href="#">Read More..</a>
-                  </div>
-                </div>
-
-
-                <div className="blog_list">
-                  <div className="imgDiv">
-                    <a href="#">
-                      <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                    </a>
-                  </div>
-                  <div className="contentText">
-                    <h5>Cleanliness & Health </h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    <a href="#">Read More..</a>
-                  </div>
-                </div>
-
-                {/*
-                <div className="blog_list">
-                  <div className="imgDiv">
-                    <a href="#">
-                      <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                    </a>
-                  </div>
-                  <div className="contentText">
-                    <h5>Cleanliness & Health </h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    <a href="#">Read More..</a>
-                  </div>
-                </div>
-
-                <div className="blog_list">
-                  <div className="imgDiv">
-                    <a href="#">
-                      <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                    </a>
-                  </div>
-                  <div className="contentText">
-                    <h5>Cleanliness & Health </h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    <a href="#">Read More..</a>
-                  </div>
-                </div>
-
-                <div className="blog_list">
-                  <div className="imgDiv">
-                    <a href="#">
-                      <img src={process.env.PUBLIC_URL + '/assets/images/service4.png'} alt='blog img' />
-                    </a>
-                  </div>
-                  <div className="contentText">
-                    <h5>Cleanliness & Health </h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                    <a href="#">Read More..</a>
-                  </div>
-                </div>
- */}
-
-              </OwlCarousel>
+           </OwlCarousel>
             </div>
           </div>
         </div>

@@ -44,7 +44,7 @@ const get_cat = async () =>{
             },[]);  
          let dataarray =  get_category.data;
             // if(get_category.status==true){
-              console.log(dataarray);
+              // console.log(dataarray);
             // }
 return (
 <>
@@ -62,13 +62,14 @@ return (
       <div className="process-items">
         <div className="row justi-style">
  {(dataarray ?? []).map((dataarray)=>{
-return  <Link to={{
+   return  <> <div className="single-item col-lg-2 col-md-6">
+<Link to={{
   pathname: "/packages",
   state: {
     cat_id: dataarray.cat_id,
   }
-}} > <div className="single-item col-lg-2 col-md-6">
-<a href="#" className="item">
+}} >
+<div className="item">
     <div className="thumb">
        <div className="img-thumb">
        {/* <img src={dataarray.cat_image} alt=""   />  */}
@@ -76,8 +77,9 @@ return  <Link to={{
        </div>
        <h5>{dataarray.cat_name}</h5>
     </div>
-  </a>
-</div> </Link>;
+  </div>
+  </Link>
+</div>  </>;
  })}
         
 

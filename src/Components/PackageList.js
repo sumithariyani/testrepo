@@ -5,8 +5,7 @@ import { Outlet, Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 const createFragment = require('react-addons-create-fragment');
 function PackageList() {
-
-
+  
   const [get_category, setGet_category] = useState([]);
 
   const get_cat = async () => {

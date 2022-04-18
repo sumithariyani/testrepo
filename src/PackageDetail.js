@@ -72,6 +72,7 @@ function PackageDetail() {
                return <div dangerouslySetInnerHTML={ { __html: input}} />
       }
       let props = {
+        package_id: get_pack.package_id,
         package_title: get_pack.package_title,
         packdtl:get_pack.description,
         total_review : get_pack.total_review,
@@ -110,7 +111,7 @@ function PackageDetail() {
             </div>
 </section>  
 
-<OtherPackageCat />
+{/* <OtherPackageCat /> */}
 <ToastContainer  position="top-right"  />     
     </>
   );

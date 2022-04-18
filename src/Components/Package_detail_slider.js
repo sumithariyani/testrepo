@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {useState, Component } from "react";
 import Slider from "react-slick";
 import { Outlet, Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css"; 
@@ -6,7 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 function Package_detail_slider(props) {
-   
+   const [pack_id, setPack_id] = useState("")
+
    const baseUrl = process.env.PUBLIC_URL + '/assets/images/';
 
    const settings = {
@@ -30,9 +31,10 @@ function Package_detail_slider(props) {
       return <div dangerouslySetInnerHTML={ { __html: input}} />
 }
 
-console.log('dddd');
+// console.log('dddd');
 console.log(props);
 
+// setPack_id(props.package_id);
     return (
         <>
      <section className="about__area pb-45 pt-45 p-relative border-style">
@@ -57,12 +59,14 @@ console.log(props);
                             
                            </div>
                            <div className="booknow">
-                              <Link to='/boook-package'  class="w-btn w-btn-blue w-btn-blue-header btnblack">Book Now</Link>
+                              {/* <Link to='/boook-package'  class="w-btn w-btn-blue w-btn-blue-header btnblack">Book Now</Link> */}
+                              <Link to={{ pathname: "/boook-package", state: { pack_id: 'test',} }} class="w-btn w-btn-blue w-btn-blue-header btnblack" > Book Now</Link>
                               </div>
                         </div>
+
                      </div>
                   </div>
-                  <div className="col-lg-5 wow fadeInRight order-lg-first text-center" data-wow-delay=".7s">
+                  <div className="col-lg-5 wow fadeInRight order-lg-first text-center" data-wow-delay = ".7s">
                      <div className="slick_card about__thumb-wrapper-2 p-relative m-img">
                      { console.log(props.package_image)}
                      <Slider {...settings}>

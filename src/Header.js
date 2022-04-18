@@ -28,7 +28,7 @@ function Header() {
                            <nav id="mobile-menu">
                               <ul>
                                  <li><NavLink activeclassname="active" to='/about'>About</NavLink ></li>
-                                 <li><NavLink to='/blogs'>Blog</NavLink ></li>
+                                 <li><NavLink to='/blog-list'>Blog</NavLink ></li>
                                  <li><NavLink to='/packages'>Packages</NavLink ></li>
                                  <li><NavLink to='/contact'>Contact Us</NavLink ></li>
 

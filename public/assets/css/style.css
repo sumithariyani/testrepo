@@ -13415,3 +13415,81 @@ opacity: 0;
 {
   padding: 4rem 0rem;
 }
+.css-1s2u09g-control
+{
+  height: 53px !important;
+  min-height: 50px;
+}
+.css-1s2u09g-control
+{
+  background-color: white;
+}
+.css-6j8wv5-Input
+{
+  height: 43px !important;
+}
+.css-qc6sy-singleValue {
+  padding-left: 1.7rem;
+  position:absolute;
+  text-transform: capitalize;
+}
+.css-319lph-ValueContainer
+{
+  display: flex !important;
+}
+.css-6j8wv5-Input input, .css-1pndypt-Input input
+{
+  height: 43px !important;
+  padding: 0px !important;
+}
+.css-6j8wv5-Input
+{
+  padding-left: 1.7rem;
+}
+.css-14el2xx-placeholder
+{
+  padding-left: 1.7rem;
+  position:absolute;
+}
+.css-1pndypt-Input
+{
+  padding-left: 1.7rem;
+  height: 43px !important;
+ background-color: transparent;
+}
+.css-1pndypt-Input .css-1pndypt-Input
+{
+ margin-top: 8px;
+}
+.join-from
+{
+  margin-left: 21px;
+}
+
+
+.fromstyle .d-inline
+{
+position: relative;
+}
+.filter_service
+{
+  background: white;
+    position: absolute;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 9px;
+}
+.filter_service ol {
+  padding-left: 0rem !important;
+  margin-bottom: 0rem;
+}
+.filter_service li {
+  list-style: none;
+  text-align: start;
+  cursor: pointer;
+  padding: 5px 23px;
+  transition: 0.3s;
+}
+.filter_service li:hover {
+  background: #ddd;
+}

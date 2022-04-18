@@ -9,7 +9,8 @@ import Footer from './Footer'
 // Iron Gate Cleaning Services Pages
 import App from './App';
 import About from './About'
-import Blogs from "./Blogs";
+import BlogDetail from "./BlogDetail";
+import BlogList from "./BlogList";
 import Packages from "./Packages";
 import PackageDetail from "./PackageDetail";
 import BookPackage from "./BookPackage";
@@ -38,7 +39,11 @@ const Routing = () => {
         <Route exact path="/" component={App} />
         <Route exact path="/home" component={App} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/blogs" component={Blogs} />
+        
+
+        <Route exact path="/blog-list" component={BlogList} />
+        <Route exact path="/blog-detail" component={BlogDetail} />
+       
         <Route exact path="/packages" component={Packages} />
         <Route exact path="/Package-detail" component={PackageDetail} />
         <Route exact path="/boook-package" component={BookPackage} />

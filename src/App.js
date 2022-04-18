@@ -13,7 +13,7 @@ function App() {
     <HeroSection />
     <FeaturedCategory />
     <PopularCategory />
-    <BestOffers />
+    {/* <BestOffers /> */}
     <RecentBlogs />
     <Testimonial />
     <Subscribe />
