@@ -1,4 +1,5 @@
 import React from "react" ;
+import { Link } from "react-router-dom";
 import{useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -61,7 +62,12 @@ return (
       <div className="process-items">
         <div className="row justi-style">
  {(dataarray ?? []).map((dataarray)=>{
-return <div className="single-item col-lg-2 col-md-6">
+return  <Link to={{
+  pathname: "/packages",
+  state: {
+    cat_id: dataarray.cat_id,
+  }
+}} > <div className="single-item col-lg-2 col-md-6">
 <a href="#" className="item">
     <div className="thumb">
        <div className="img-thumb">
@@ -71,7 +77,7 @@ return <div className="single-item col-lg-2 col-md-6">
        <h5>{dataarray.cat_name}</h5>
     </div>
   </a>
-</div>;
+</div> </Link>;
  })}
         
 

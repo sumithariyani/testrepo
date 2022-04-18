@@ -9,13 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 function Footer() {
    const footerForm = async (e) =>{
       e.preventDefault();
-       
+
          const Formvlaues = new FormData(e.target);
      
          try{
           let response = await axios.post('/subscribe_email',Formvlaues,{headers:{ "Content-Type": "multipart/form-data",
           "Accept": "application/json","type": "formData"}});
-       
+
           console.log(response.data);
         if(response.data.status === true)
         {

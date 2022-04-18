@@ -1,6 +1,11 @@
 import React from 'react';
 
 function BookingPackage() {
+
+  function test_signup(e){
+    e.preventDefault();
+   alert('Booking Confirm');
+  }  
 return (
 <>
   <section className="about__area pb-45 pt-45 p-relative border-style">
@@ -120,7 +125,7 @@ return (
 
                 <div className='col-lg-12 mt-50 text-center'>
                   <label className='label text-uppercase'>Aed 99</label>
-                  <a className="w-btn w-btn-blue w-btn-blue-header btnpay" href="">PAY NOW</a>
+                  <a className="w-btn w-btn-blue w-btn-blue-header btnpay" onClick={test_signup} href="">PAY NOW</a>
                 </div>
 
               </div>

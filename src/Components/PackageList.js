@@ -63,7 +63,7 @@ function PackageList() {
           <div className="row">
             <div className="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
               <div className="section__title-wrapper section__title-wrapper-5 text-center mb-25 wow fadeInUp" data-wow-delay=".3s">
-                <h2 className="section__title-5 section__title-5-p mb-15">Bathroom & Kitchen Cleaning    </h2>
+                <h2 className="section__title-5 section__title-5-p mb-15">All Package</h2>
                 <p>Bathroom & Kitchen Cleaning    </p>
 
               </div>
@@ -81,7 +81,7 @@ function PackageList() {
                       {/* <img src={process.env.PUBLIC_URL + '/assets/images/p1.png'} /> */}
                       <img src={item.package_image[0]} />
                     </div>
-                    <h4>{item.package_category}</h4>
+                    <h4>{item.package_title}</h4>
                   </a>
                   {changeHtml(item.description)}
 

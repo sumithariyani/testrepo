@@ -9,12 +9,19 @@ function UpdateProfile(){
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
+    const [country, setCountry] = useState("")
+    const [region, setRegion] = useState("")
+    const [city, setCity] = useState("")
+    const [area, setArea] = useState("")
+    const [zipcode, setZipcode] = useState("")
+    const [building_name, setBuilding_name] = useState("")
+    let user_id = localStorage.getItem('user_id');
     const get_cat = async () => {
 
         const getData = async (formDataa) => {
             let formData = new FormData();
             let token = 'a250bcr552s'
-            let user_id = localStorage.getItem('user_id');
+           
             formData.append("token", token);
             formData.append("user_id", user_id);
 
@@ -36,12 +43,20 @@ function UpdateProfile(){
         let res = await getData({ token: 'a250bcr552s' });
 
         if (res.status) {
-            // console.log(res.data);
+            console.log(res.data);
             setGet_category(res.data);
-            console.log(get_category);
-            setName(get_category.name);
-            setEmail(get_category.email);
-            setPhone(get_category.phone);
+            // console.log(get_category);
+            setName(res.data.name);
+            setEmail(res.data.email);
+            setPhone(res.data.phone);
+            setCountry(res.data.country);
+            setRegion(res.data.region);
+            setCity(res.data.city);
+            setArea(res.data.area);
+            setZipcode(res.data.zipcode);
+            setBuilding_name(res.data.building_name);
+          
+
         } else {
             toast.error(res.message);
         }
@@ -65,13 +80,62 @@ function UpdateProfile(){
     }, []);
 
       
+    const save_cat = async () => {
+        // let org_code = localStorage.getItem('org_code');
+    
+        // const options = { headers:{"Content-type": "application/multipart/form-data" }};
+    
+        const saveData = async () => {
+          let formData = new FormData();
+          let token = 'a250bcr552s'
+          formData.append("token", token);
+          formData.append("email", email.trim());
+          formData.append("user_id", user_id);
+          formData.append("name", name.trim());
+          formData.append("phone", phone.trim());
+          formData.append("country", country.trim());
+          formData.append("region", region.trim());
+          formData.append("city", city.trim());
+          formData.append("area", area.trim());
+          formData.append("zipcode", zipcode.trim());
+          formData.append("building_name", building_name.trim());
+        
+          const options = {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json",
+              "type": "formData"
+            }
+          };
+          console.log(formData);
+          try {
+            let response = await axios.post('/iron_gate/admin/api/edit_profile', formData, options);
+            console.log(response.data);
+            if (response.data.status == true) {
+            
+              window.location.href = 'profile';
+            }
+            //  ccconsole.log(test);
+            return response.data;
+            // sessionStorage.setItem("pageView", response.data);
+          } catch (err) { console.error(err); toast.error('some errror'); return false; }
+        }
+        let res = await saveData();
+        if (res.status) {
+          // setGet_category(res);
+          // alert(res.message);
+          toast(res.message)
+        } else {
+          toast.error(res.message);
+        }
+      }
 return(
     <>
     <section className='update_profile'>
     <div className='container'>
     <div className='row justify-content-center'>
         <div className='col-lg-10'>
-            <form>
+            {/* <form> */}
             <h3 className='text-center'>Update Profile</h3>
             <div className='userImg mb-20'>
              <div className='imgbox'>
@@ -102,21 +166,21 @@ return(
              </div>     
          </div>
          <div className='input_type col-lg-5'>
-            <div className='otpinput'>
+            {/* <div className='otpinput'>
                 <h5 className='mr-20'>ENTER OTP</h5>
                 <input type='text' maxLength='1' name='f1' id='' className='mr-10' />
                 <input type='text' maxLength='1' name='f2' id='' className='mr-10' />
                 <input type='text' maxLength='1' name='f2' id='' className='mr-10' />
                 <input type='text' maxLength='1' name='f4' id='' />
-            </div>
+            </div> */}
          </div>
          <div className='mt-10 buttonsubmit'>
          <div className="d-flex justify-content-end">
              <button className="btn  w-btn w-btn-white mr-20">Decline</button>
-             <button className="btn btnsubmit w-btn">Save</button></div>
+             <button className="btn btnsubmit w-btn" onClick={save_cat} >Save</button></div>
          </div>
          </div>
-            </form>
+            {/* </form> */}
         </div>
     </div>
     </div>

@@ -33,18 +33,14 @@ function Profile() {
 
         let res = await getData({ token: 'a250bcr552s' });
 
-        if (res.status) {
-            // console.log(res.data);
+        if (res.status===true) {
+            console.log(res);
             setGet_category(res.data);
-
         } else {
             toast.error(res.message);
         }
     }
-    useEffect(() => {
-        get_cat();
-    }, []);
-
+  
     useEffect(() => {
 
         const body = document.querySelector("body");
@@ -53,7 +49,11 @@ function Profile() {
             body.classList.remove("body_black");
         }
     });
-    console.log(get_category);
+    useEffect(() => {
+        get_cat();
+    }, []);
+
+    // console.log(get_category);
     return (
         <>
 
